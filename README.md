@@ -84,26 +84,321 @@ A clean, distraction-free notepad application with real-time auto-save, intellig
    - View definitions
    - Get spelling suggestions for misspelled words
 
-## 📁 Project Structure
+# Project Structure Guide
+
+## 📁 Complete Folder Structure
 
 ```
 minimal-notepad/
-├── index.html           # Main HTML structure with embedded CSS and JS
+├── index.html              # Main HTML file
 ├── css/
-│   └── style.css       # All styling (embedded in index.html)
+│   └── style.css          # All CSS styles
 ├── js/
-│   ├── config.js       # Configuration constants
-│   ├── storage.js      # LocalStorage management
-│   ├── ui.js           # UI state management
-│   ├── tabs.js         # Tab management
-│   ├── editor.js       # Editor content management
-│   ├── spell-checker.js # Spell checking functionality
-│   ├── zoom.js         # Zoom controls
-│   ├── file-handler.js # File operations
-│   └── app.js          # Application initialization
-├── README.md           # This file
-├── LICENSE             # MIT License
-└── .gitignore         # Git ignore rules
+│   ├── config.js          # Configuration constants
+│   ├── storage.js         # LocalStorage management
+│   ├── ui.js              # UI state management
+│   ├── tabs.js            # Tab management
+│   ├── editor.js          # Editor content management
+│   ├── spell-checker.js   # Spell checking functionality
+│   ├── zoom.js            # Zoom controls
+│   ├── file-handler.js    # File operations
+│   └── app.js             # Application initialization
+├── main.js                 # Electron main process (optional, for desktop)
+├── preload.js             # Electron preload script (optional, for desktop)
+├── package.json           # NPM configuration (for desktop version)
+├── README.md              # Documentation
+└── .gitignore            # Git ignore file
+
+```
+
+## 🚀 Setup Instructions
+
+### For Web Version (Browser):
+
+1. **Create the folder structure**:
+```bash
+mkdir minimal-notepad
+cd minimal-notepad
+mkdir css js
+```
+
+2. **Create all files**:
+   - Copy `index.html` to root
+   - Copy `style.css` to `css/` folder
+   - Copy all JS files to `js/` folder
+
+3. **Run the application**:
+```bash
+# Option 1: Simple HTTP server with Python
+python -m http.server 8000
+
+# Option 2: Node.js http-server (install: npm install -g http-server)
+http-server
+
+# Option 3: PHP
+php -S localhost:8000
+
+# Option 4: Just open index.html in your browser
+```
+
+4. **Access**: Open browser and go to `http://localhost:8000`
+
+---
+
+### For Desktop Version (Electron):
+
+1. **Create the folder structure** (same as above)
+
+2. **Add Electron files**:
+   - Copy `main.js` to root
+   - Copy `preload.js` to root
+   - Copy `package.json` to root
+
+3. **Install dependencies**:
+```bash
+npm install
+```
+
+4. **Run in development**:
+```bash
+npm start
+```
+
+5. **Build for distribution**:
+```bash
+# Windows
+npm run build-win
+
+# macOS
+npm run build-mac
+
+# Linux
+npm run build-linux
+
+# All platforms
+npm run build
+```
+
+## 📝 File Descriptions
+
+### HTML
+- **index.html**: Main application structure with semantic HTML
+
+### CSS
+- **css/style.css**: All styling with CSS custom properties (variables)
+
+### JavaScript (Modular Architecture)
+
+#### Core Configuration
+- **js/config.js**: 
+  - Application constants
+  - API endpoints
+  - Default values
+  
+#### Data Layer
+- **js/storage.js**: 
+  - LocalStorage wrapper
+  - Get/Set/Remove operations
+  - Error handling
+
+#### UI Layer
+- **js/ui.js**: 
+  - Menu management
+  - Status updates
+  - Event handling
+  
+- **js/tabs.js**: 
+  - Tab creation/deletion
+  - Tab switching
+  - Active tab management
+
+#### Business Logic
+- **js/editor.js**: 
+  - Content management
+  - Word/character counting
+  - Cursor operations
+  
+- **js/spell-checker.js**: 
+  - Dictionary API integration
+  - Spell suggestions
+  - Word replacement
+
+- **js/zoom.js**: 
+  - Zoom in/out/reset
+  - Keyboard shortcuts
+  - Mouse wheel support
+
+- **js/file-handler.js**: 
+  - File open/save/download
+  - Browser file system API
+  - Tab integration
+
+#### Application Layer
+- **js/app.js**: 
+  - Application initialization
+  - Component coordination
+  - Event delegation
+  - State management
+
+### Electron (Desktop Version)
+- **main.js**: 
+  - Electron main process
+  - Window management
+  - System font detection
+  - IPC communication
+
+- **preload.js**: 
+  - Secure bridge
+  - Context isolation
+  - API exposure
+
+- **package.json**: 
+  - NPM configuration
+  - Build scripts
+  - Dependencies
+
+## 🔧 .gitignore
+
+Create a `.gitignore` file:
+
+```gitignore
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+*.dmg
+*.exe
+*.deb
+*.rpm
+*.AppImage
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+```
+
+## 🎯 SOLID Principles Applied
+
+### Single Responsibility Principle (SRP)
+Each class has ONE reason to change:
+- `StorageManager`: Only storage operations
+- `UIManager`: Only UI state
+- `TabManager`: Only tab operations
+- `EditorManager`: Only editor content
+- `SpellChecker`: Only spell checking
+- `ZoomManager`: Only zoom operations
+- `FileHandler`: Only file operations
+- `NotepadApp`: Only coordination
+
+### Open/Closed Principle (OCP)
+- Classes are open for extension
+- Closed for modification
+- Add new features by creating new classes
+
+### Liskov Substitution Principle (LSP)
+- All managers have consistent interfaces
+- Predictable method signatures
+- No unexpected behavior
+
+### Interface Segregation Principle (ISP)
+- Small, focused interfaces
+- No forced implementations
+- Each class does what it needs
+
+### Dependency Inversion Principle (DIP)
+- High-level doesn't depend on low-level
+- Dependencies injected via constructors
+- Loose coupling between components
+
+## 📦 Dependencies
+
+### Web Version
+- **Zero dependencies!** ✨
+- Pure vanilla JavaScript
+- No build tools required
+- No package manager needed
+
+### Desktop Version
+- `electron`: ^28.0.0 (Desktop framework)
+- `electron-builder`: ^24.9.0 (Build tool)
+
+## 🔍 Troubleshooting
+
+### CSS Not Loading
+**Problem**: Styles not applied when running `npm start`
+
+**Solution**:
+1. Ensure folder structure is correct:
+   ```
+   css/style.css (not css/css/style.css)
+   ```
+2. Check HTML link tag:
+   ```html
+   <link rel="stylesheet" href="css/style.css">
+   ```
+3. Clear browser cache (Ctrl+Shift+R)
+4. Check browser console for 404 errors
+
+### JavaScript Not Working
+**Problem**: Features not working
+
+**Solution**:
+1. Ensure all JS files are in `js/` folder
+2. Check script loading order in HTML (config.js first, app.js last)
+3. Open browser console (F12) to check for errors
+4. Verify file names match exactly (case-sensitive)
+
+### Electron Not Starting
+**Problem**: `npm start` fails
+
+**Solution**:
+1. Delete `node_modules` and `package-lock.json`
+2. Run `npm install` again
+3. Check Node.js version: `node --version` (should be v16+)
+4. Ensure `main.js` is in root folder
+
+## 🚀 Quick Start Commands
+
+```bash
+# Web Version - Python
+python -m http.server 8000
+
+# Web Version - Node.js
+npx http-server
+
+# Desktop Version - Install
+npm install
+
+# Desktop Version - Run
+npm start
+
+# Desktop Version - Build Windows
+npm run build-win
+
+# Desktop Version - Build macOS
+npm run build-mac
+
+# Desktop Version - Build Linux
+npm run build-linux
 ```
 
 ## 🏗️ Architecture & SOLID Principles
