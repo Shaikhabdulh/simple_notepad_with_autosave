@@ -4,7 +4,7 @@
 
 A clean, distraction-free notepad application with real-time auto-save, intelligent spell checking, customizable system fonts, and zoom controls.
 
-![Screenshot](https://github.com/yourusername/minimal-notepad/raw/main/screenshot.png)
+![Screenshot](https://github.com/Shaikhabdulh/minimal-notepad/raw/main/screenshot.png)
 
 ## Features
 
@@ -28,7 +28,7 @@ A clean, distraction-free notepad application with real-time auto-save, intellig
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/minimal-notepad.git
+   git clone https://github.com/Shaikhabdulh/minimal-notepad.git
    cd minimal-notepad
    ```
 
@@ -215,7 +215,7 @@ Includes common web fonts for all systems:
 1. **Fork the repository** on GitHub
 2. **Clone your fork**:
    ```bash
-   git clone https://github.com/yourusername/minimal-notepad.git
+   git clone https://github.com/Shaikhabdulh/minimal-notepad.git
    cd minimal-notepad
    ```
 3. **Install dependencies**:
@@ -386,10 +386,6 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 - **Documentation**: Help improve guides and docs
 - **Translations**: Add support for new languages
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - [Dictionary API](https://dictionaryapi.dev/) - Free dictionary service
@@ -411,8 +407,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/minimal-notepad/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/minimal-notepad/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Shaikhabdulh/simple_notepad_with_autosave/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Shaikhabdulh/simple_notepad_with_autosave/discussions)
 
 ---
 
